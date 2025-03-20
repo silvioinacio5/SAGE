@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\SchoolController;
 use GuzzleHttp\Middleware;
 
 Route::get('/', [AuthController::class, 'login']);
@@ -13,5 +14,8 @@ Route::get('logout', [AuthController::class, 'logout']);
 Route::group(['middleware' => 'common'], function(){
 
 Route::get('panel/dashboard', [DashboardController::class, 'dashboard']);
+Route::get('panel/school', [SchoolController::class, 'school_list']);
+Route::get('panel/school/create', [SchoolController::class, 'create_school']);
+Route::post('panel/school/create', [SchoolController::class, 'insert_school']);
 
 });
