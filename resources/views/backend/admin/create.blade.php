@@ -4,13 +4,13 @@
     <!-- START BREADCRUMB -->
     <ul class="breadcrumb">
         <li><a href="#">Home</a></li>
-        <li class="active">Escola</li>
+        <li class="active">Admin</li>
     </ul>
     <!-- END BREADCRUMB -->
     
     <!-- PAGE TITLE -->
     <div class="page-title">                    
-        <h2><a href="{{url('http://localhost/SAGE/panel/school')}}" class="fa fa-arrow-circle-o-left"></a>Criar Escola</h2>
+        <h2><a href="{{url('http://localhost/SAGE/panel/admin')}}" class="fa fa-arrow-circle-o-left"></a>Criar Admin</h2>
     </div>
     <!-- END PAGE TITLE -->                
     
@@ -27,14 +27,14 @@
                         {{@csrf_field()}}
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><strong>Criar</strong> Escola</h3>
+                            <h3 class="panel-title"><strong>Criar</strong> Admin</h3>
                             
                         </div>
                         <span><strong style="color: red">*</strong>Indicação de Campos obrigatórios</span>
                         <div class="panel-body">                                                                        
                             
                             <div class="form-group">
-                                <label class="col-md-3 col-xs-12 control-label">Nome Escola<strong style="color: red">*</strong></label>
+                                <label class="col-md-3 col-xs-12 control-label">Nome Admin<strong style="color: red">*</strong></label>
                                 <div class="col-md-6 col-xs-12">                                            
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
@@ -115,7 +115,7 @@
 
                         </div>
                         <div class="panel-footer">
-                            <a href="{{url('http://localhost/SAGE/panel/school/create')}}" class="btn btn-default">Limpar infs</a>                                    
+                            <a href="{{url('http://localhost/SAGE/panel/admin/create')}}" class="btn btn-default">Limpar infs</a>                                    
                             <button class="btn btn-primary pull-right">Enviar</button>
                         </div>
                     </div>

@@ -29,10 +29,15 @@
         <li class="{{(Request::segment(2)== 'dashboard')? 'active':''}}">
             <a href="{{url('panel/dashboard')}}"><span class="fa fa-desktop"></span><span class="xn-text">Dashboard</span></a>
         </li>
+
+        <li class="{{(Request::segment(2)== 'admin')? 'active':''}}">
+            <a href="{{url('panel/admin')}}"><span class="fa fa-user"></span><span class="xn-text">Admin</span></a>
+        </li>
+
         <li class="{{(Request::segment(2)== 'school')? 'active':''}}">
             <a href="{{url('panel/school')}}"><span class="fa fa-user"></span><span class="xn-text">Escola</span></a>
         </li>
-        
+
         <li class="xn-openable">
             <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">Layouts</span></a>
             <ul>

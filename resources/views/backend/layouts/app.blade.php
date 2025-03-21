@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="PT-PT">
     <head>        
         <!-- META SECTION -->
         <title>{{!empty($meta_title)? $meta_title:'' }} - {{config('app.name')}}</title>            
