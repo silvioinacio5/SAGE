@@ -10,7 +10,7 @@
     
     <!-- PAGE TITLE -->
     <div class="page-title">                    
-        <h2><a href="{{url('http://localhost/SAGE/panel/school')}}" class="fa fa-arrow-circle-o-left"></a>Criar Escola</h2>
+        <h2><a href="{{url('http://localhost/SAGE/panel/school')}}" class="fa fa-arrow-circle-o-left"></a>Cadastrar Escola</h2>
     </div>
     <!-- END PAGE TITLE -->                
     
@@ -27,7 +27,7 @@
                         {{@csrf_field()}}
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><strong>Criar</strong> Escola</h3>
+                            <h3 class="panel-title"><strong>Cadastrar</strong> Escola</h3>
                             
                         </div>
                         <span><strong style="color: red">*</strong>Indicação de Campos obrigatórios</span>

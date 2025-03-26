@@ -76,7 +76,7 @@
         <!-- END MESSAGE BOX-->
 
         <!-- START PRELOADS -->
-        <audio id="audio-alert" src="{{url('public/audio/alert.mp3')}}" preload="auto"></audio>
+        <audio id="audio-alert" src="{{url('public/audio/alert.opus')}}" preload="auto"></audio>
         <audio id="audio-fail" src="{{url('public/audio/fail.mp3')}}" preload="auto"></audio>
         <!-- END PRELOADS -->                      
 

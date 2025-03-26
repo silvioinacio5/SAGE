@@ -18,7 +18,7 @@ class SchoolController extends Controller
         return view('backend.school.list', $data);
     }
     public function create_school(){
-        $data['meta_title'] = "Criar Escola";
+        $data['meta_title'] = "Cadastrar Escola";
         return view('backend.school.create', $data);
     }
     public function insert_school(Request $request){

@@ -10,7 +10,7 @@
     
     <!-- PAGE TITLE -->
     <div class="page-title">                    
-        <h2><a href="{{url('http://localhost/SAGE/panel/admin')}}" class="fa fa-arrow-circle-o-left"></a>Criar Admin</h2>
+        <h2><a href="{{url('http://localhost/SAGE/panel/admin')}}" class="fa fa-arrow-circle-o-left"></a>Cadastrar Admin</h2>
     </div>
     <!-- END PAGE TITLE -->                
     
@@ -27,7 +27,7 @@
                         {{@csrf_field()}}
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><strong>Criar</strong> Admin</h3>
+                            <h3 class="panel-title"><strong>Cadastrar</strong> Admin</h3>
                             
                         </div>
                         <span><strong style="color: red">*</strong>Indicação de Campos obrigatórios</span>
@@ -112,6 +112,20 @@
                                 });
                             </script>
                             
+                            <div class="form-group">                                        
+                                <label class="col-md-3 col-xs-12 control-label">Papel</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <span id="statusIcon" class="fa fa-user"></span>
+                                        </span>
+                                        <select class="form-control" name="is_admin" id="">
+                                            <option value="1">Super Admin</option>    
+                                            <option value="2">Admin</option>    
+                                        </select>     
+                                    </div>       
+                                </div>
+                            </div>
 
                         </div>
                         <div class="panel-footer">

@@ -18,7 +18,7 @@ class AdminController extends Controller
         return view('backend.admin.list', $data);
     }
     public function create_admin(){
-        $data['meta_title'] = "Criar Admin";
+        $data['meta_title'] = "Cadastrar Admin";
         return view('backend.admin.create', $data);
     }
     public function insert_admin(Request $request){

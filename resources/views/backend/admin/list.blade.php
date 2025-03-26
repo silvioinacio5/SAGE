@@ -74,7 +74,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Lista Admin</h3>
-                        <a href="{{url('panel/admin/create')}}" class="btn btn-success pull-right">Criar Admin</a>
+                        <a href="{{url('panel/admin/create')}}" class="btn btn-success pull-right">Cadastrar Admin</a>
                     </div>
                     <div class="panel-body panel-body-table">
 
