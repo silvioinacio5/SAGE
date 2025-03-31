@@ -6,6 +6,9 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\SchoolController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\TeacherController;
+use App\Http\Controllers\Backend\SchoolAdminController;
+use App\Http\Controllers\Backend\ClassController;
+
 use GuzzleHttp\Middleware;
 
 Route::get('/', [AuthController::class, 'login']);
@@ -13,10 +16,10 @@ Route::post('/', [AuthController::class, 'auth_login']);
 Route::get('forgot', [AuthController::class, 'forgot']);
 Route::get('logout', [AuthController::class, 'logout']);
 
+
 Route::group(['middleware' => 'common'], function(){
 
         Route::get('panel/dashboard', [DashboardController::class, 'dashboard']);
-
 
 
 });
@@ -44,5 +47,19 @@ Route::group(['middleware' => 'school'], function(){
         Route::post('panel/teacher/create', [TeacherController::class, 'insert_teacher']);
         Route::get('panel/teacher/edit/{id}', [TeacherController::class, 'edit_teacher']);
         Route::post('panel/teacher/edit/{id}', [TeacherController::class, 'update_teacher']);
-        Route::get('panel/teacher/delete/{id}', [TeacherController::class, 'delete_teacher']);     
+        Route::get('panel/teacher/delete/{id}', [TeacherController::class, 'delete_teacher']);
+        
+        Route::get('panel/school_admin', [SchoolAdminController::class, 'school_admin_list']);
+        Route::get('panel/school_admin/create', [SchoolAdminController::class, 'create_school_admin']);
+        Route::post('panel/school_admin/create', [SchoolAdminController::class, 'insert_school_admin']);
+        Route::get('panel/school_admin/edit/{id}', [SchoolAdminController::class, 'edit_school_admin']);
+        Route::post('panel/school_admin/edit/{id}', [SchoolAdminController::class, 'update_school_admin']);
+        Route::get('panel/school_admin/delete/{id}', [SchoolAdminController::class, 'delete_school_admin']);
+
+        Route::get('panel/class', [ClassController::class, 'class_list']);
+        Route::get('panel/class/create', [ClassController::class, 'create_class']);
+        Route::post('panel/class/create', [ClassController::class, 'insert_class']);
+        Route::get('panel/class/edit/{id}', [ClassController::class, 'edit_class']);
+        Route::post('panel/class/edit/{id}', [ClassController::class, 'update_class']);
+        Route::get('panel/class/delete/{id}', [ClassController::class, 'delete_class']);
 });

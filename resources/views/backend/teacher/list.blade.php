@@ -86,7 +86,10 @@
                             <table class="table table-bordered table-striped table-actions">
                                 <thead>
                                     <tr>
-                                        <th>id</th>
+                                        <th>#</th>
+                                        @if (Auth::user()->is_admin == 1 || Auth::user()->is_admin == 2)
+                                            <th>Nome Escola</th>    
+                                        @endif
                                         <th>Img</th>
                                         <th>Nome</th>
                                         <th>Apelido</th>
@@ -106,6 +109,13 @@
                                     @forelse($getTeacher as $value)
                                         <tr>
                                             <td>{{$value->id}}</td>
+                                            @if (Auth::user()->is_admin == 1 || Auth::user()->is_admin == 2)
+                                                <td>
+                                                    @if (!empty($value->getCreatedBy))
+                                                        {{$value->getCreatedBy->name}}
+                                                    @endif
+                                                </td>    
+                                            @endif
                                             <td>
                                                 @if(!empty($value->getProfile()))
                                                     <img src="{{$value->getProfile()}}" style="width: 50px; height:50px; border-radius:50px;" alt="">

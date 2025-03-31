@@ -18,6 +18,7 @@ class TeacherController extends Controller
         return view('backend.teacher.list', $data);
     }
     public function create_teacher(){
+        $data['getSchool'] = User::getSchoolAll();
         $data['meta_title'] = "Cadastrar Professor";
         return view('backend.teacher.create', $data);
     }
@@ -45,8 +46,15 @@ class TeacherController extends Controller
     $teacher->date_joining = trim($request->date_joining);
     $teacher->phone = trim($request->phone);
     $teacher->marital_status = trim($request->marital_status);
-    $teacher->created_by_id = Auth::user()->id;
     $teacher->is_admin = 5;
+    if (Auth::user()->is_admin == 1 || Auth::user()->is_admin == 2)
+    {
+        $teacher->created_by_id = $request->school_id;
+    }
+    else
+    {
+        $teacher->created_by_id = Auth::user()->id;
+    }
     $teacher->save();
 
     if (!empty($request->file('profile_pic'))) {

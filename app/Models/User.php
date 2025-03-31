@@ -53,7 +53,8 @@ class User extends Authenticatable
         return User::find($id);
     }
 
-    static public function getSchool(){
+    static public function getSchool()
+    {
 
         $return = self::select('*');
         if(!empty(Request::get('id'))){
@@ -81,11 +82,23 @@ class User extends Authenticatable
         $return = $return->where('is_admin', '=', 3)
             ->where('is_delete', '=', 0)
             ->orderBy('id', 'desc')
-            ->paginate(7);
+            ->paginate(4);
             return $return;
     }
 
-    static public function getTeacher($user_id, $user_type){
+    static public function getSchoolAll($value=''){
+
+        return self::select('*')
+            ->where('is_admin', '=', 3)
+            ->where('is_delete', '=', 0)
+            ->where('status', '=', 1)
+            ->orderBy('id', 'desc')
+            ->get();
+            
+    }
+
+    static public function getTeacher($user_id, $user_type)
+    {
 
       $return = self::select('*');
         if(!empty(Request::get('id'))){
@@ -116,13 +129,66 @@ class User extends Authenticatable
            $return = $return->where('status', '=', $status);
         }
 
+        if($user_type == 3)
+        {
+            
+            $return = $return->where('created_by_id', '=', $user_id);
+        }
         $return = $return->where('is_admin', '=', 5)
-            ->where('created_by_id', '=', $user_id)
             ->where('is_delete', '=', 0)
             ->orderBy('id', 'desc')
-            ->paginate(7);
+            ->paginate(4);
             return $return;
     }
+
+    static public function getSchoolAdmin($user_id, $user_type)
+    {
+
+      $return = self::select('*');
+        if(!empty(Request::get('id'))){
+            $return = $return->where('id', '=', Request::get('id'));
+        }
+        if(!empty(Request::get('name'))){
+            $return = $return->where('name', 'like', '%'.Request::get('name').'%');
+        }
+        if(!empty(Request::get('email'))){
+            $return = $return->where('email', 'like', '%'.Request::get('email').'%');
+        }
+        if(!empty(Request::get('address'))){
+            $return = $return->where('address', 'like', '%'.Request::get('address').'%');
+        }
+        if(!empty(Request::get('address'))){
+            $return = $return->where('address', 'like', '%'.Request::get('address').'%');
+        }
+        if(!empty(Request::get('gender'))){
+            $return = $return->where('gender', '=', Request::get('gender'));
+        }
+        if(!empty(Request::get('status')))
+        {
+           $status = Request::get('status');
+           if($status == 100)
+           {
+            $status = 0;
+           }
+           $return = $return->where('status', '=', $status);
+        }
+
+        if($user_type == 3)
+        {
+            
+            $return = $return->where('created_by_id', '=', $user_id);
+        }
+        $return = $return->where('is_admin', '=', 4)
+            ->where('is_delete', '=', 0)
+            ->orderBy('id', 'desc')
+            ->paginate(4);
+            return $return;
+    }
+
+    public function getCreatedBy(){
+        return $this->belongsTo(User::class, 'created_by_id');
+    }
+
     public function getProfile()
     {
         if(!empty($this->profile_pic) && file_exists('upload/profile/'.$this->profile_pic))
@@ -173,7 +239,9 @@ static public function getAdmin()
         $return = $return->whereIn('is_admin', ['1', '2'])
             ->where('is_delete', '=', 0)
             ->orderBy('id', 'desc')
-            ->paginate(7);
+            ->paginate(4);
             return $return;
     }
+
+
 }

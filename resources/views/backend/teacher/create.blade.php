@@ -32,7 +32,24 @@
                         </div>
                         <span><strong style="color: red">*</strong>Indicação de Campos obrigatórios</span>
                         <div class="panel-body">                                                                        
-                            
+                            @if (Auth::user()->is_admin == 1 || Auth::user()->is_admin == 2)
+                            <div class="form-group">                                        
+                                <label class="col-md-3 col-xs-12 control-label">Nome Escola</label>
+                                <div class="col-md-6 col-xs-12">
+                                    
+                                        <span class="input-group-addon">
+                                            <span id="statusIconUser" class="fa fa-male"></span>
+                                        </span>
+                                        <select class="form-control" name="school_id" id="statusSelectUser">
+                                            <option value="">Selecionar</option>
+                                            @foreach ($getSchool as $school)
+                                                <option value="{{$school->id}}">{{$school->name}}</option>
+                                            @endforeach 
+                                        </select>     
+                                        
+                                </div>
+                            </div>
+                            @endif
                             <div class="form-group">
                                 <label class="col-md-3 col-xs-12 control-label">Nome<strong style="color: red">*</strong></label>
                                 <div class="col-md-6 col-xs-12">                                            

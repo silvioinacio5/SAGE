@@ -14,7 +14,8 @@
     </div>
     <!-- END PAGE TITLE -->                
     
-    <!-- PAGE CONTENT WRAPPER -->
+    <!-- PAGE CONTENT WRAPPER -->    
+    
     
     <!-- END PAGE CONTENT WRAPPER -->                                    
     </div>         

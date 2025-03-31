@@ -22,6 +22,13 @@
                 <div class="login-logo"></div>
                 <div class="login-body">
                     <div class="login-title"><strong>Entrar</strong> na Conta</div>
+                    @php
+                    #    $senha = '5555';
+                    #    $hash = password_hash($senha, PASSWORD_BCRYPT);
+                    #    echo $hash;
+                    @endphp
+                    
+
                     <form action="" class="form-horizontal" method="post">
                         {{csrf_field()}}
                         @include('message')
