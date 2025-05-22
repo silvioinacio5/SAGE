@@ -1,3 +1,4 @@
+@if (!empty(Auth::user()))
 <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
     <!-- TOGGLE NAVIGATION -->
     <li class="xn-icon-button">
@@ -103,3 +104,4 @@
     </li>
     <!-- END MESSAGES -->
 </ul>
+@endif

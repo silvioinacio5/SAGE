@@ -79,7 +79,7 @@ class User extends Authenticatable
            $return = $return->where('status', '=', $status);
         }
 
-        $return = $return->where('is_admin', '=', 3)
+        $return = $return->where('is_admin', '=', 2)
             ->where('is_delete', '=', 0)
             ->orderBy('id', 'desc')
             ->paginate(4);
@@ -97,7 +97,7 @@ class User extends Authenticatable
             
     }
 
-    static public function getTeacher($user_id, $user_type)
+    static public function getCandidato($user_id, $user_type)
     {
 
       $return = self::select('*');
@@ -134,7 +134,7 @@ class User extends Authenticatable
             
             $return = $return->where('created_by_id', '=', $user_id);
         }
-        $return = $return->where('is_admin', '=', 5)
+        $return = $return->where('is_admin', '=', 3)
             ->where('is_delete', '=', 0)
             ->orderBy('id', 'desc')
             ->paginate(4);
@@ -194,6 +194,18 @@ class User extends Authenticatable
         if(!empty($this->profile_pic) && file_exists('upload/profile/'.$this->profile_pic))
         {
             return url('upload/profile/'.$this->profile_pic);
+        }
+        else
+        {
+            return "";
+        }
+    }
+
+    public function getCv()
+    {
+        if(!empty($this->cv) && file_exists('upload/profile/'.$this->cv))
+        {
+            return url('upload/profile/'.$this->cv);
         }
         else
         {

@@ -15,6 +15,20 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('nif')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('profile_pic')->nullable();
+            $table->date('birth_date')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('education_level')->nullable();
+            $table->string('bio')->nullable();
+            $table->string('cv')->nullable(); // caminho do PDF
+            $table->string('industria')->nullable(); // ramo de atuação
+            $table->string('website')->nullable();
+            $table->text('description')->nullable();
+
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

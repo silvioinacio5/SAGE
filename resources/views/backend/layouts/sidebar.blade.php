@@ -1,5 +1,7 @@
 <div class="page-sidebar">
     <!-- START X-NAVIGATION -->
+    @if (!empty(Auth::user()))
+        
     <ul class="x-navigation">
         <li class="">
             <a href="{{url('panel/dashboard')}}" style="font-size: 20px; text-align:center;">
@@ -20,21 +22,15 @@
                 
                 <div class="profile-data">
                     <div class="profile-data-name">{{Auth::user()->name}}</div>
-                    <div class="profile-data-title">@if (Auth::user()->is_admin == 3)
-                        Administrador Da Instituição
+                    <div class="profile-data-title">
+                    @if (Auth::user()->is_admin == 3)
+                        Candidato
                     @elseif (Auth::user()->is_admin == 1)
-                        Super Administrador
-                        @elseif (Auth::user()->is_admin == 2)
                         Administrador
-                        @elseif (Auth::user()->is_admin == 5)
-                        Professor
-                        @elseif (Auth::user()->is_admin == 6)
-                        Estudante
-                        @elseif (Auth::user()->is_admin == 7)
-                        Responsável legal
-                        @elseif (Auth::user()->is_admin == 4)
-                        Administrador Da Instituição
-                    @endif</div>
+                        @elseif (Auth::user()->is_admin == 2)
+                        Empresa        
+                    @endif
+                </div>
                 </div>
                 <div class="profile-controls">
                     <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
@@ -47,57 +43,69 @@
             <a href="{{url('panel/dashboard')}}"><span class="fa fa-desktop"></span><span class="xn-text">Dashboard</span></a>
         </li>
 
-        @if (Auth::user()->is_admin == 1 || Auth::user()->is_admin == 2)
+        @if (Auth::user()->is_admin == 1)
         
             <div class="title">
             </div>
             <li class="{{(Request::segment(2)== 'admin')? 'active':''}}">
-                <a href="{{url('panel/admin')}}"><span class="fa fa-user"></span><span class="xn-text">Admin</span></a>
+                <a href="{{url('panel/admin/edit/1')}}"><span class="fa fa-user"></span><span class="xn-text">Perfil Admin</span></a>
             </li>
 
-            <li class="{{(Request::segment(2)== 'school')? 'active':''}}">
-                <a href="{{url('panel/school')}}"><span class="fa fa-user"></span><span class="xn-text">Escola</span></a>
+            <li class="{{(Request::segment(2)== 'empresa')? 'active':''}}">
+                <a href="{{url('panel/empresa')}}"><span class="fa fa-user"></span><span class="xn-text">Empresas</span></a>
+            </li>
+
+            <li class="{{(Request::segment(2)== 'candidatura')? 'active':''}}">
+                <a href="{{url('panel/candidatura')}}"><span class="fa fa-user"></span><span class="xn-text">Candidaturas</span></a>
+            </li>
+
+            <li class="{{(Request::segment(2)== 'candidato')? 'active':''}}">
+                <a href="{{url('panel/candidato')}}"><span class="fa fa-user"></span><span class="xn-text">Candidatos</span></a>
+            </li>
+
+            <li class="{{(Request::segment(2)== 'vaga')? 'active':''}}">
+                <a href="{{url('panel/vaga')}}"><span class="fa fa-user"></span><span class="xn-text">Vagas</span></a>
             </li>
 
         @endif
         
-        @if (Auth::user()->is_admin == 1 || Auth::user()->is_admin == 2 || Auth::user()->is_admin == 3)
-        <li class="{{(Request::segment(2)== 'school_admin')? 'active':''}}">
-            <a href="{{url('panel/school_admin')}}"><span class="fa fa-user"></span><span class="xn-text">Admin Escola</span></a>
-        </li>    
-        <li class="{{(Request::segment(2)== 'teacher')? 'active':''}}">
-            <a href="{{url('panel/teacher')}}"><span class="fa fa-user"></span><span class="xn-text">Professor</span></a>
-        </li>    
-        @endif
-        @if (Auth::user()->is_admin == 1 || Auth::user()->is_admin == 2 || Auth::user()->is_admin == 5)
-        <li class="{{(Request::segment(2)== 'student')? 'active':''}}">
-            <a href="{{url('panel/student')}}"><span class="fa fa-user"></span><span class="xn-text">Estudantes</span></a>
-        </li>     
-        <li class="{{(Request::segment(2)== 'class')? 'active':''}}">
-            <a href="{{url('panel/class')}}"><span class="fa fa-user"></span><span class="xn-text">Disciplinas</span></a>
-        </li>
-        @endif
+        @if (Auth::user()->is_admin == 2)
 
-        @if (Auth::user()->is_admin == 1 || Auth::user()->is_admin == 2 ||Auth::user()->is_admin == 6)
-        <li class="{{(Request::segment(2)== 'class')? 'active':''}}">
-            <a href="{{url('panel/class')}}"><span class="fa fa-user"></span><span class="xn-text">Turma</span></a>
-        </li>
-        <li class="{{(Request::segment(2)== 'class')? 'active':''}}">
-            <a href="{{url('panel/class')}}"><span class="fa fa-user"></span><span class="xn-text">Boletim</span></a>
-        </li>     
-        <li class="{{(Request::segment(2)== 'class')? 'active':''}}">
-            <a href="{{url('panel/class')}}"><span class="fa fa-user"></span><span class="xn-text">Disciplinas</span></a>
-        </li>
+            <li class="{{(Request::segment(2)== 'empresa')? 'active':''}}">
+                <a href="{{url('panel/empresa/edit/3')}}"><span class="fa fa-user"></span><span class="xn-text">Perfil </span></a>
+            </li>
+
+            <li class="{{(Request::segment(2)== 'vaga')? 'active':''}}">
+                <a href="{{url('panel/vaga')}}"><span class="fa fa-user"></span><span class="xn-text">Vagas</span></a>
+            </li>
+
+            <li class="{{(Request::segment(2)== 'class')? 'active':''}}">
+                <a href="{{url('panel/vaga')}}"><span class="fa fa-user"></span><span class="xn-text">Exames</span></a>
+            </li>
+
+            <li class="{{(Request::segment(2)== 'candidatura')? 'active':''}}">
+                <a href="{{url('panel/candidatura')}}"><span class="fa fa-user"></span><span class="xn-text">Candidaturas</span></a>
+            </li>
+            
         @endif
         @if (Auth::user()->is_admin == 3)
-        <li class="xn-openable">
-            <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">Acadêmico</span></a>
-            <ul>
-                <li><a href="{{url('panel/class')}}">Turma</a></li>
-                <li><a href="{{url('panel/subject')}}">Disciplina</a></li>
-            </ul>
-        </li>         
+
+        <li class="{{(Request::segment(2)== 'candidato')? 'active':''}}">
+            <a href="{{url('panel/candidato/edit/2')}}"><span class="fa fa-user"></span><span class="xn-text">Perfil </span></a>
+        </li>
+             
+        <li class="{{(Request::segment(2)== 'vaga')? 'active':''}}">
+            <a href="{{url('panel/vaga')}}"><span class="fa fa-user"></span><span class="xn-text">Vagas</span></a>
+        </li>
+
+        <li class="{{(Request::segment(2)== 'candidatura')? 'active':''}}">
+            <a href="{{url('panel/candidatura')}}"><span class="fa fa-user"></span><span class="xn-text">Candidaturas</span></a>
+        </li>
+
         @endif
+
     </ul>
+
+    @endif
     <!-- END X-NAVIGATION -->
 </div>

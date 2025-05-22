@@ -9,20 +9,19 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class AdminController extends Controller
+class EmpresaController extends Controller
 {
-    public function admin_list(){
-        $data['getAdmin'] = User::getAdmin();
-        $data['meta_title'] = "Admin";
+    public function empresa_list(){
+        $data['getSchool'] = User::getSchool();
+        $data['meta_title'] = "Empresa";
         //$user = User::all();
-        return view('backend.admin.list', $data);
+        return view('backend.empresas.list', $data);
     }
-    public function create_admin(){
-        $data['getAdmin'] = User::getAdmin();
-        $data['meta_title'] = "Cadastrar Admin";
-        return view('backend.admin.create', $data);
+    public function create_empresa(){
+        $data['meta_title'] = "Cadastrar Empresa";
+        return view('backend.empresas.create', $data);
     }
-    public function insert_admin(Request $request){
+    public function insert_empresa(Request $request){
         //dd($request->all());
         request()->validate([
             'email' => 'required|email|unique:users',
@@ -30,11 +29,16 @@ class AdminController extends Controller
 
         $user = new User;
         $user->name = trim($request->name);
+        $user->descricao = trim($request->descricao);
+        $user->website = trim($request->website);
+        $user->nif = trim($request->nif);
+        $user->industria = trim($request->industria);
+        $user->phone = trim($request->phone);
         $user->email = trim($request->email);
         $user->password = Hash::make($request->password);
         $user->address = trim($request->address);
-        $user->status = trim($request->status);
-        $user->is_admin = 2;
+        $user->status = 1;
+        $user->is_admin = 3;
         $user->created_by_id = Auth::user()->id;
         $user->save();
         
@@ -50,16 +54,16 @@ class AdminController extends Controller
             $user->profile_pic = $filename;
             $user->save();
         }
-        return redirect('panel/admin')->with('success', "Admin criada com sucesso!");
+        return redirect('panel/empresa')->with('success', "Empresa criada com sucesso!");
 
     }
-    public function edit_admin($id){
-        $data['getAdmin'] = User::getSingle($id);
-        $data['meta_title'] = "Editar Admin";
-        return view('backend.admin.edit', $data);
+    public function edit_empresa($id){
+        $data['getSchool'] = User::getSingle($id);
+        $data['meta_title'] = "Editar empresa";
+        return view('backend.empresas.edit', $data);
     }
 
-    public function update_admin($id, Request $request){
+    public function update_empresa($id, Request $request){
         //dd($request->all());
         request()->validate([
             'email' => 'required|email|unique:users,email,'.$id,
@@ -67,14 +71,18 @@ class AdminController extends Controller
 
         $user = User::getSingle($id);
         $user->name = trim($request->name);
+        $user->descricao = trim($request->descricao);
+        $user->website = trim($request->website);
+        $user->nif = trim($request->nif);
+        $user->industria = trim($request->industria);
+        $user->phone = trim($request->phone);
         $user->email = trim($request->email);
-        $user->is_admin = trim($request->is_admin);
         if(!empty($request->password))
         {
             $user->password = Hash::make($request->password);
         }
         $user->address = trim($request->address);
-        $user->status = trim($request->status);
+        $user->status = 1;
         $user->save();
         
 
@@ -89,14 +97,14 @@ class AdminController extends Controller
             $user->profile_pic = $filename;
             $user->save();
         }
-        return redirect('/panel/dashboard')->with('success', "Admin Editado com sucesso!");
+        return redirect('panel/empresa')->with('success', "Empresa Editada com sucesso!");
 
     }
 
-    public function delete_admin($id){
+    public function delete_empresa($id){
         $user = User::getSingle($id);
         $user->is_delete = 1;
         $user->save();
-        return redirect('panel/admin')->with('success', "Admin Apagada com sucesso!");
+        return redirect('panel/empresa')->with('success', "Empresa Apagada com sucesso!");
     }
 }

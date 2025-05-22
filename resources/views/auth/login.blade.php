@@ -19,7 +19,7 @@
         <div class="login-container">
         
             <div class="login-box animated fadeInDown">
-                <div class="login-logo"></div>
+                <a href="{{url('/home')}}"><h2 style="color: white; text-align:center;">OPPORTUNE</h2></a>
                 <div class="login-body">
                     <div class="login-title"><strong>Entrar</strong> na Conta</div>
                     @php

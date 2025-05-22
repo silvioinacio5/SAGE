@@ -12,7 +12,10 @@
         
         <!-- CSS INCLUDE -->        
         <link rel="stylesheet" type="text/css" id="theme" href="{{url('public/css/theme-default.css')}}"/>
-        <!-- EOF CSS INCLUDE -->                                       
+        <!-- EOF CSS INCLUDE --> 
+        <!-- Adicione no <head> -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                                      
     </head>
     <body>
         <!-- START PAGE CONTAINER -->
@@ -27,10 +30,10 @@
                 
                 <!-- START X-NAVIGATION VERTICAL -->
                 @include('backend.layouts.header')
+                
                 @yield('content')
+                
             </div>
-                <!-- END X-NAVIGATION VERTICAL -->                          
-            </div>            
             <!-- END PAGE CONTENT -->
         </div>
         <!-- END PAGE CONTAINER -->    
@@ -86,7 +89,8 @@
         <script type="text/javascript" src="{{url('public/js/plugins/jquery/jquery-ui.min.js')}}"></script>
         <script type="text/javascript" src="{{url('public/js/plugins/bootstrap/bootstrap.min.js')}}"></script>        
         <!-- END PLUGINS -->
-        
+        <script type="text/javascript" src="{{url('public/js/settings.js')}}"></script>
+
         <!-- START THIS PAGE PLUGINS-->        
         <script type='text/javascript' src="{{url('public/js/plugins/icheck/icheck.min.js')}}"></script>
         <script type="text/javascript" src="{{url('public/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js')}}"></script>

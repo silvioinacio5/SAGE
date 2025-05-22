@@ -1,11 +1,21 @@
-@if (!@empty(session('success')))
-    <div class="alert alert-success" role="alert">
-        {{session('success')}}
-    </div>    
+@if (session('success'))
+    <script>
+        Swal.fire({
+            title: 'Sucesso!',
+            text: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    </script>
 @endif
 
-@if (!@empty(session('error')))
-    <div class="alert alert-danger" role="alert">
-        {{session('error')}}
-    </div>    
+@if (session('error'))
+    <script>
+        Swal.fire({
+            title: 'Erro!',
+            text: '{{ session('error') }}',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    </script>
 @endif
